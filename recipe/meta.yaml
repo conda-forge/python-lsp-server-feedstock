@@ -1,5 +1,5 @@
 {% set name = "python-lsp-server" %}
-{% set version = "1.2.1" %}
+{% set version = "1.2.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: fe10b8f1ef7cd4f5b4aafcb5e29a2bbd454459442d434bbe1af97d2f3a94f55c
+  sha256: 8c3e8ff5ff076f1aed8db5f14041e76d19ebd09ba1867e3f5f2f6740423ce0e3
 
 build:
   number: 0
@@ -26,7 +26,7 @@ requirements:
     - pycodestyle >=2.7.0,<2.8.0
     - pydocstyle >=2.0.0
     - pyflakes >=2.3.0,<2.4.0
-    - pylint >=2.5.0
+    - pylint >=2.5.0,<2.10.0
     - python >=3.6
     - yapf
     - pluggy
