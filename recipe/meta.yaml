@@ -1,5 +1,5 @@
 {% set name = "python-lsp-server" %}
-{% set version = "1.2.3" %}
+{% set version = "1.2.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 07ec8b9427c4265a7458f46f4a913beb970441518f5ced6886f71dae6725f72e
+  sha256: 007278c4419339bd3a61ca6d7eb8648ead28b5f1b9eba3b6bae8540046116335
 
 build:
   number: 0
@@ -21,21 +21,21 @@ requirements:
     - python >=3.6
     - pip
   run:
+    - autopep8
+    - flake8 >=3.8.0,<4.0.0
     - jedi >=0.17.2,<0.19
+    - mccabe >=0.6.0,<0.7.0
+    - pluggy
     - python-lsp-jsonrpc >=1.0.0
     - pycodestyle >=2.7.0,<2.8.0
     - pydocstyle >=2.0.0
     - pyflakes >=2.3.0,<2.4.0
     - pylint >=2.5.0,<2.10.0
     - python >=3.6
-    - yapf
-    - pluggy
-    - autopep8
-    - mccabe >=0.6.0,<0.7.0
-    - setuptools >=39.0.0
     - rope >=0.10.5
-    - flake8 >=3.8.0
+    - setuptools >=39.0.0
     - ujson >=3.0
+    - yapf
 
 test:
   requires:
