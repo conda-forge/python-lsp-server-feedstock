@@ -10,7 +10,7 @@ source:
   sha256: 007278c4419339bd3a61ca6d7eb8648ead28b5f1b9eba3b6bae8540046116335
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
@@ -27,7 +27,7 @@ requirements:
     - mccabe >=0.6.0,<0.7.0
     - pluggy
     - python-lsp-jsonrpc >=1.0.0
-    - pycodestyle >=2.7.0,<2.8.0
+    - pycodestyle >=2.7.0
     - pydocstyle >=2.0.0
     - pyflakes >=2.3.0,<2.4.0
     - pylint >=2.5.0,<2.10.0
