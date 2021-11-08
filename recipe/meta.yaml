@@ -10,7 +10,7 @@ source:
   sha256: 007278c4419339bd3a61ca6d7eb8648ead28b5f1b9eba3b6bae8540046116335
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
@@ -21,7 +21,7 @@ requirements:
     - python >=3.6
     - pip
   run:
-    - autopep8
+    - autopep8 <1.6.0
     - flake8 >=3.8.0,<4.0.0
     - jedi >=0.17.2,<0.19
     - mccabe >=0.6.0,<0.7.0
