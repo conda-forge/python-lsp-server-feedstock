@@ -27,7 +27,7 @@ requirements:
     - mccabe >=0.6.0,<0.7.0
     - pluggy
     - python-lsp-jsonrpc >=1.0.0
-    - pycodestyle >=2.7.0,<2.8.0
+    - pycodestyle >=2.7.0
     - pydocstyle >=2.0.0
     - pyflakes >=2.3.0,<2.4.0
     - pylint >=2.5.0,<2.10.0
