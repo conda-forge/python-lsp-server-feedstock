@@ -1,5 +1,5 @@
 {% set name = "python-lsp-server" %}
-{% set version = "1.3.3" %}
+{% set version = "1.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 1b48ccd8b70103522e8a8b9cb9ae1be2b27a5db0dfd661e7e44e6253ebefdc40
+  sha256: 769142c07573f6b66e930cbd7c588b826082550bef6267bb0aec63e7b6260009
 
 build:
   number: 0
@@ -18,7 +18,7 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python >=3.7
     - pip
   run:
     - autopep8 >=1.6.0,<1.7.0
@@ -31,7 +31,7 @@ requirements:
     - pydocstyle >=2.0.0
     - pyflakes >=2.4.0,<2.5.0
     - pylint >=2.5.0
-    - python >=3.6
+    - python >=3.7
     - rope >=0.10.5
     - setuptools >=39.0.0
     - ujson >=3.0
