@@ -10,7 +10,7 @@ source:
   sha256: be7f83298af9f0951a93972cafc9db04fd7cf5c05f20812515275f0ba70e342f
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
@@ -20,6 +20,9 @@ requirements:
   host:
     - python >=3.7
     - pip
+    # Needed at build time to produce a package with the correct version for pip
+    # See https://github.com/pypa/setuptools_scm/issues/636#issuecomment-1026435048
+    - setuptools_scm
   run:
     - autopep8 >=1.6.0,<1.7.0
     - flake8 >=4.0.0,<4.1.0
@@ -43,6 +46,10 @@ test:
   commands:
     - python -m pip check
     - pylsp --help
+    # The pip version can be reported incorrectly if setuptools_scm isn't available
+    # at build time.
+    # Based on https://github.com/conda-forge/pyusb-feedstock/pull/4
+    - pip list | grep -i {{ name }} | grep {{ version }}
 
 about:
   home: https://github.com/python-lsp/python-lsp-server
