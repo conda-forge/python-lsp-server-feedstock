@@ -1,5 +1,5 @@
 {% set name = "python-lsp-server" %}
-{% set version = "1.4.1" %}
+{% set version = "1.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: be7f83298af9f0951a93972cafc9db04fd7cf5c05f20812515275f0ba70e342f
+  sha256: e5c094c19925022a27c4068f414b2bb653243f8fb0d768e39735289d7a89380d
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
@@ -28,7 +28,7 @@ requirements:
     - flake8 >=4.0.0,<4.1.0
     - jedi >=0.17.2,<0.19
     - mccabe >=0.6.0,<0.7.0
-    - pluggy
+    - pluggy >=1.0.0
     - python-lsp-jsonrpc >=1.0.0
     - pycodestyle >=2.8.0,<2.9.0
     - pydocstyle >=2.0.0
@@ -38,6 +38,7 @@ requirements:
     - rope >=0.10.5
     - setuptools >=39.0.0
     - ujson >=3.0
+    - whatthepatch
     - yapf
 
 test:
