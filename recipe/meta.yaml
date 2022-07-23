@@ -15,9 +15,11 @@ build:
 
 outputs:
   - name: python-lsp-server-base
-    script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-    entry_points:
-      - pylsp = pylsp.__main__:main
+    version: {{ version }}
+    build:
+      script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+      entry_points:
+        - pylsp = pylsp.__main__:main
     requirements:
       host:
         - python >=3.7
@@ -44,6 +46,7 @@ outputs:
         - pip list | grep -i python-lsp-server | grep {{ version }}
 
   - name: python-lsp-server
+    version: {{ version }}
     requirements:
       run:
         - {{ pin_subpackage("python-lsp-server-base", exact=True) }}
