@@ -2,7 +2,7 @@
 {% set version = "1.5.0" %}
 
 package:
-  name: {{ name }}-meta
+  name: python-lsp-server-meta
   version: {{ version }}
 
 source:
@@ -14,7 +14,7 @@ build:
   noarch: python
 
 outputs:
-  - name: {{ name }}-base
+  - name: python-lsp-server-base
     script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
     entry_points:
       - pylsp = pylsp.__main__:main
@@ -41,12 +41,12 @@ outputs:
         # The pip version can be reported incorrectly if setuptools_scm isn't available
         # at build time.
         # Based on https://github.com/conda-forge/pyusb-feedstock/pull/4
-        - pip list | grep -i {{ name }} | grep {{ version }}
+        - pip list | grep -i python-lsp-server | grep {{ version }}
 
-  - name: {{ name }}
+  - name: python-lsp-server
     requirements:
       run:
-        - {{ pin_subpackage("{{ name }}-base", exact=True) }}
+        - {{ pin_subpackage("python-lsp-server-base", exact=True) }}
         - autopep8 >=1.6.0,<1.7.0
         - flake8 >=4.0.0,<4.1.0
         - mccabe >=0.6.0,<0.7.0
