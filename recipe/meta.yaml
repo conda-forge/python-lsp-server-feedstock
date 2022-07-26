@@ -24,7 +24,7 @@ outputs:
   - name: python-lsp-server-base
     version: {{ version }}
     build:
-      script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+      script: '{{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv'
       entry_points:
         - pylsp = pylsp.__main__:main
     requirements:
