@@ -1,5 +1,6 @@
 {% set name = "python-lsp-server" %}
 {% set version = "1.5.0" %}
+{% set build_number = 1 %}
 
 package:
   name: python-lsp-server-meta
@@ -10,7 +11,7 @@ source:
   sha256: e5c094c19925022a27c4068f414b2bb653243f8fb0d768e39735289d7a89380d
 
 build:
-  number: 1
+  number: {{ build_number }}
   noarch: python
 
 requirements:
@@ -24,6 +25,8 @@ outputs:
   - name: python-lsp-server-base
     version: {{ version }}
     build:
+      number: {{ build_number }}
+      noarch: python
       script: '"${PYTHON}" -m pip install . --no-deps --no-build-isolation -vv'  # [unix]
       script: '%PYTHON% -m pip install . --no-deps --no-build-isolation -vv'     # [win]
       entry_points:
@@ -55,6 +58,9 @@ outputs:
 
   - name: python-lsp-server
     version: {{ version }}
+    build:
+      number: {{ build_number }}
+      noarch: python
     requirements:
       run:
         - {{ pin_subpackage("python-lsp-server-base", exact=True) }}
