@@ -27,8 +27,7 @@ outputs:
     build:
       number: {{ build_number }}
       noarch: python
-      script: '"${PYTHON}" -m pip install . --no-deps --no-build-isolation -vv'  # [unix]
-      script: '%PYTHON% -m pip install . --no-deps --no-build-isolation -vv'     # [win]
+      script: '{{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv'
       entry_points:
         - pylsp = pylsp.__main__:main
     requirements:
