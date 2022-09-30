@@ -25,11 +25,11 @@ outputs:
   - name: python-lsp-server-base
     version: {{ version }}
     build:
-      number: {{ build_number }}
-      noarch: python
-      script: '{{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv'
-      entry_points:
-        - pylsp = pylsp.__main__:main
+     number: {{ build_number }}
+     noarch: python
+     script: python -m pip install . --no-deps --no-build-isolation -vv
+     entry_points:
+       - pylsp = pylsp.__main__:main
     requirements:
       host:
         - python >=3.7
