@@ -1,8 +1,9 @@
 {% set name = "python-lsp-server" %}
 {% set version = "1.5.0" %}
+{% set build_number = 1 %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name|lower }}-meta
   version: {{ version }}
 
 source:
@@ -10,47 +11,78 @@ source:
   sha256: e5c094c19925022a27c4068f414b2bb653243f8fb0d768e39735289d7a89380d
 
 build:
-  number: 0
+  number: {{ build_number }}
   noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
-  entry_points:
-    - pylsp = pylsp.__main__:main
 
 requirements:
   host:
-    - python >=3.7
     - pip
-    # Needed at build time to produce a package with the correct version for pip
-    # See https://github.com/pypa/setuptools_scm/issues/636#issuecomment-1026435048
-    - setuptools_scm
+    - python >=3.7
   run:
-    - autopep8 >=1.6.0,<1.7.0
-    - flake8 >=4.0.0,<4.1.0
-    - jedi >=0.17.2,<0.19
-    - mccabe >=0.6.0,<0.7.0
-    - pluggy >=1.0.0
-    - python-lsp-jsonrpc >=1.0.0
-    - pycodestyle >=2.8.0,<2.9.0
-    - pydocstyle >=2.0.0
-    - pyflakes >=2.4.0,<2.5.0
-    - pylint >=2.5.0
     - python >=3.7
-    - rope >=0.10.5
-    - setuptools >=39.0.0
-    - ujson >=3.0
-    - whatthepatch
-    - yapf
 
-test:
-  requires:
-    - pip
-  commands:
-    - python -m pip check
-    - pylsp --help
-    # The pip version can be reported incorrectly if setuptools_scm isn't available
-    # at build time.
-    # Based on https://github.com/conda-forge/pyusb-feedstock/pull/4
-    - pip list | grep -i {{ name }} | grep {{ version }}
+outputs:
+  - name: {{ name|lower }}-base
+    version: {{ version }}
+    build:
+     number: {{ build_number }}
+     noarch: python
+     script: python -m pip install . --no-deps --no-build-isolation -vv
+     entry_points:
+       - pylsp = pylsp.__main__:main
+    requirements:
+      host:
+        - python >=3.7
+        - pip
+        # Needed at build time to produce a package with the correct version for pip
+        # See https://github.com/pypa/setuptools_scm/issues/636#issuecomment-1026435048
+        - setuptools_scm >=3.4.3
+      run:
+        - python >=3.7
+        - jedi >=0.17.2,<0.19
+        - python-lsp-jsonrpc >=1.0.0
+        - pluggy >=1.0.0
+        - ujson >=3.0
+        - setuptools >=39.0.0
+    test:
+      requires:
+        - pip
+      commands:
+        - python -m pip check
+        - pylsp --help
+        # The pip version can be reported incorrectly if setuptools_scm isn't available
+        # at build time.
+        # Based on https://github.com/conda-forge/pyusb-feedstock/pull/4
+        - pip list | grep -i python-lsp-server | grep {{ version }}
+
+  - name: {{ name|lower }}
+    version: {{ version }}
+    build:
+      number: {{ build_number }}
+      noarch: python
+    requirements:
+      run:
+        - {{ pin_subpackage("python-lsp-server-base", exact=True) }}
+        - autopep8 >=1.6.0,<1.7.0
+        - flake8 >=4.0.0,<4.1.0
+        - mccabe >=0.6.0,<0.7.0
+        - pycodestyle >=2.8.0,<2.9.0
+        - pydocstyle >=2.0.0
+        - pyflakes >=2.4.0,<2.5.0
+        - pylint >=2.5.0
+        - rope >=0.10.5
+        - whatthepatch
+        - yapf
+    test:
+      requires:
+        - pip
+      commands:
+        - python -m pip check
+        - pylsp --help
+        # The pip version can be reported incorrectly if setuptools_scm isn't available
+        # at build time.
+        # Based on https://github.com/conda-forge/pyusb-feedstock/pull/4
+        - pip list | grep -i python-lsp-server | grep {{ version }}
 
 about:
   home: https://github.com/python-lsp/python-lsp-server
