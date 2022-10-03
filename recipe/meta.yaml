@@ -3,7 +3,7 @@
 {% set build_number = 1 %}
 
 package:
-  name: python-lsp-server-meta
+  name: {{ name|lower }}-meta
   version: {{ version }}
 
 source:
@@ -22,7 +22,7 @@ requirements:
     - python >=3.7
 
 outputs:
-  - name: python-lsp-server-base
+  - name: {{ name|lower }}-base
     version: {{ version }}
     build:
      number: {{ build_number }}
@@ -55,7 +55,7 @@ outputs:
         # Based on https://github.com/conda-forge/pyusb-feedstock/pull/4
         - pip list | grep -i python-lsp-server | grep {{ version }}
 
-  - name: python-lsp-server
+  - name: {{ name|lower }}
     version: {{ version }}
     build:
       number: {{ build_number }}
