@@ -1,5 +1,5 @@
 {% set name = "python-lsp-server" %}
-{% set version = "1.7.1" %}
+{% set version = "1.7.2" %}
 {% set build_number = 0 %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 67473bb301f35434b5fa8b21fc5ed5fac27dc8a8446ccec8bae456af52a0aef6
+  sha256: b2433467d0fcb8fd45828463ff1cc805837c08731fcea5d7d953d9be776881e1
 
 build:
   number: {{ build_number }}
@@ -62,18 +62,22 @@ outputs:
       number: {{ build_number }}
       noarch: python
     requirements:
+      host:
+        - {{ pin_subpackage("python-lsp-server-base", exact=True) }}
+        - python >=3.7
       run:
         - {{ pin_subpackage("python-lsp-server-base", exact=True) }}
-        - autopep8 >=1.6.0,<1.7.0
+        - autopep8 >=1.6.0,<2.1.0
         - flake8 >=5.0.0,<7.0.0
         - mccabe >=0.7.0,<0.8.0
         - pycodestyle >=2.9.0,<2.11.0
-        - pydocstyle >=6.2.0,<6.3.0
+        - pydocstyle >=6.3.0,<6.4.0
         - pyflakes >=2.5.0,<3.1.0
         - pylint >=2.5.0,<3.0.0
         - rope >=1.2.0
+        - toml
         - whatthepatch >=1.0.2,<2.0.0
-        - yapf
+        - yapf <=0.32.0
     test:
       requires:
         - pip
