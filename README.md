@@ -1,11 +1,11 @@
-About python-lsp-server-meta
-============================
+About python-lsp-server-meta-feedstock
+======================================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/python-lsp-server-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/python-lsp/python-lsp-server
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/python-lsp-server-feedstock/blob/main/LICENSE.txt)
 
 Summary: An implementation of the Language Server Protocol for Python
 
