@@ -1,5 +1,5 @@
 {% set name = "python-lsp-server" %}
-{% set version = "1.7.2" %}
+{% set version = "1.7.3" %}
 {% set build_number = 0 %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b2433467d0fcb8fd45828463ff1cc805837c08731fcea5d7d953d9be776881e1
+  sha256: a31b0525be6ec831c7d2b476b744e5aa5074633e1d1b77ee97f332cde15983ea
 
 build:
   number: {{ build_number }}
@@ -25,11 +25,11 @@ outputs:
   - name: {{ name|lower }}-base
     version: {{ version }}
     build:
-     number: {{ build_number }}
-     noarch: python
-     script: python -m pip install . --no-deps --no-build-isolation -vv
-     entry_points:
-       - pylsp = pylsp.__main__:main
+      number: {{ build_number }}
+      noarch: python
+      script: python -m pip install . --no-deps --no-build-isolation -vv
+      entry_points:
+        - pylsp = pylsp.__main__:main
     requirements:
       host:
         - python >=3.7
