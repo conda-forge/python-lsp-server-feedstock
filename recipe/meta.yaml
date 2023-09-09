@@ -1,5 +1,5 @@
 {% set name = "python-lsp-server" %}
-{% set version = "1.7.4" %}
+{% set version = "1.8.0" %}
 {% set build_number = 0 %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c84254485a4d9431b24ecefd59741d21c00165611bcf6037bd7d54d0ed06a197
+  sha256: 807b0347cf83f02cbd9113a68624ac5dbf8b01854a3b11dd03c3bbbdff4e5d89
 
 build:
   number: {{ build_number }}
@@ -17,9 +17,9 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python >=3.8
   run:
-    - python >=3.7
+    - python >=3.8
 
 outputs:
   - name: {{ name|lower }}-base
@@ -32,19 +32,19 @@ outputs:
         - pylsp = pylsp.__main__:main
     requirements:
       host:
-        - python >=3.7
+        - python >=3.8
         - pip
         # Needed at build time to produce a package with the correct version for pip
         # See https://github.com/pypa/setuptools_scm/issues/636#issuecomment-1026435048
         - setuptools_scm >=3.4.3
       run:
-        - python >=3.7
-        - jedi >=0.17.2,<0.19
-        - python-lsp-jsonrpc >=1.0.0
+        - python >=3.8
+        - importlib_metadata >=4.8.3
+        - jedi >=0.17.2,<0.20
+        - python-lsp-jsonrpc >=1.1.0,<2.0.0
         - pluggy >=1.0.0
         - docstring-to-markdown
         - ujson >=3.0
-        - setuptools >=39.0.0
     test:
       requires:
         - pip
@@ -64,18 +64,17 @@ outputs:
     requirements:
       host:
         - {{ pin_subpackage("python-lsp-server-base", exact=True) }}
-        - python >=3.7
+        - python >=3.8
       run:
         - {{ pin_subpackage("python-lsp-server-base", exact=True) }}
         - autopep8 >=1.6.0,<2.1.0
-        - flake8 >=5.0.0,<7.0.0
+        - flake8 >=6.1.0,<7.0.0
         - mccabe >=0.7.0,<0.8.0
-        - pycodestyle >=2.9.0,<2.11.0
+        - pycodestyle >=2.11.0,<2.12.0
         - pydocstyle >=6.3.0,<6.4.0
-        - pyflakes >=2.5.0,<3.1.0
+        - pyflakes >=3.1.0,<3.2.0
         - pylint >=2.5.0,<3.0.0
         - rope >=1.2.0
-        - toml
         - whatthepatch >=1.0.2,<2.0.0
         - yapf >=0.33.0
     test:
@@ -96,7 +95,7 @@ about:
   license_file: LICENSE
   summary: An implementation of the Language Server Protocol for Python
   description: |
-    A Python 3.7+ implementation of the Language Server Protocol
+    A Python 3.8+ implementation of the Language Server Protocol
     making use of Jedi, pycodestyle, Pyflakes and YAPF.
   dev_url: https://github.com/python-lsp/python-lsp-server
 
