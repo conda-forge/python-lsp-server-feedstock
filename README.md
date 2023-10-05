@@ -153,5 +153,6 @@ Feedstock Maintainers
 * [@andfoy](https://github.com/andfoy/)
 * [@ccordoba12](https://github.com/ccordoba12/)
 * [@dalthviz](https://github.com/dalthviz/)
+* [@krassowski](https://github.com/krassowski/)
 * [@steff456](https://github.com/steff456/)
 
