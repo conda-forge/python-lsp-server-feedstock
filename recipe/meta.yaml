@@ -1,5 +1,5 @@
 {% set name = "python-lsp-server" %}
-{% set version = "1.10.0" %}
+{% set version = "1.10.1" %}
 {% set build_number = 0 %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 0c9a52dcc16cd0562404d529d50a03372db1ea6fb8dfcc3792b3265441c814f4
+  sha256: ec4c5706af67a265a19173fe4beb3b0a2c1626fa33a15ea952c2f288798b8c0d
 
 build:
   number: {{ build_number }}
