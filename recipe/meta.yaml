@@ -1,6 +1,6 @@
 {% set name = "python-lsp-server" %}
 {% set version = "1.12.0" %}
-{% set build_number = 0 %}
+{% set build_number = 1 %}
 
 package:
   name: {{ name|lower }}-meta
@@ -18,9 +18,9 @@ requirements:
   host:
     - pip
     - setuptools >=61.2.0
-    - python >=3.8
+    - python {{ python_min }}
   run:
-    - python >=3.8
+    - python >={{ python_min }}
 
 outputs:
   - name: {{ name|lower }}-base
@@ -33,14 +33,14 @@ outputs:
         - pylsp = pylsp.__main__:main
     requirements:
       host:
-        - python >=3.8
+        - python {{ python_min }}
         - pip
         - setuptools >=61.2.0
         # Needed at build time to produce a package with the correct version for pip
         # See https://github.com/pypa/setuptools_scm/issues/636#issuecomment-1026435048
         - setuptools_scm >=3.4.3
       run:
-        - python >=3.8
+        - python >={{ python_min }}
         - importlib_metadata >=4.8.3
         - jedi >=0.17.2,<0.20
         - python-lsp-jsonrpc >=1.1.0,<2.0.0
@@ -50,6 +50,7 @@ outputs:
     test:
       requires:
         - pip
+        - python {{ python_min }}
       commands:
         - python -m pip check
         - pylsp --help
@@ -66,7 +67,7 @@ outputs:
     requirements:
       host:
         - {{ pin_subpackage("python-lsp-server-base", exact=True) }}
-        - python >=3.8
+        - python {{ python_min }}
       run:
         - {{ pin_subpackage("python-lsp-server-base", exact=True) }}
         - autopep8 >=2.0.4,<2.1.0
@@ -82,6 +83,7 @@ outputs:
     test:
       requires:
         - pip
+        - python {{ python_min }}
       commands:
         - python -m pip check
         - pylsp --help
