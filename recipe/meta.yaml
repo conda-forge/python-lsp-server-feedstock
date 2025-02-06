@@ -70,6 +70,7 @@ outputs:
         - python {{ python_min }}
       run:
         - {{ pin_subpackage("python-lsp-server-base", exact=True) }}
+        - python >={{ python_min }}
         - autopep8 >=2.0.4,<2.1.0
         - flake8 >=7.1.0,<8.0.0
         - mccabe >=0.7.0,<0.8.0
