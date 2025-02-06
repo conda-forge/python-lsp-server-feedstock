@@ -1,6 +1,6 @@
 {% set name = "python-lsp-server" %}
-{% set version = "1.12.0" %}
-{% set build_number = 1 %}
+{% set version = "1.12.1" %}
+{% set build_number = 0 %}
 
 package:
   name: {{ name|lower }}-meta
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: b6a336f128da03bd9bac1e61c3acca6e84242b8b31055a1ccf49d83df9dc053b
+  sha256: bd90fcabf53066f0a66e4246767e96cd99c13ad16e61b95fd3ab622821ea048c
 
 build:
   number: {{ build_number }}
@@ -70,6 +70,7 @@ outputs:
         - python {{ python_min }}
       run:
         - {{ pin_subpackage("python-lsp-server-base", exact=True) }}
+        - python >={{ python_min }}
         - autopep8 >=2.0.4,<2.1.0
         - flake8 >=7.1.0,<8.0.0
         - mccabe >=0.7.0,<0.8.0
