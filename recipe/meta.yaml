@@ -1,5 +1,6 @@
 {% set name = "python-lsp-server" %}
-{% set version = "1.12.2" %}
+{% set version = "1.13.0" %}
+{% set python_min = "3.9" %}
 {% set build_number = 0 %}
 
 package:
@@ -8,7 +9,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: fea039a36b3132774d0f803671184cf7dde0c688e7b924f23a6359a66094126d
+  sha256: 378f26b63ecf4c10864de31de5e6da7ad639de9bd60a75d4110fea36fb8d0d69
 
 build:
   number: {{ build_number }}
@@ -41,6 +42,7 @@ outputs:
         - setuptools_scm >=3.4.3
       run:
         - python >={{ python_min }}
+        - black
         - importlib-metadata >=4.8.3
         - jedi >=0.17.2,<0.20
         - python-lsp-jsonrpc >=1.1.0,<2.0.0
@@ -100,7 +102,7 @@ about:
   license_file: LICENSE
   summary: An implementation of the Language Server Protocol for Python
   description: |
-    A Python 3.8+ implementation of the Language Server Protocol
+    A Python 3.9+ implementation of the Language Server Protocol
     making use of Jedi, pycodestyle, Pyflakes and YAPF.
   dev_url: https://github.com/python-lsp/python-lsp-server
 
