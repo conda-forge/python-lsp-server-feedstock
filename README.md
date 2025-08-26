@@ -11,7 +11,7 @@ Summary: An implementation of the Language Server Protocol for Python
 
 Development: https://github.com/python-lsp/python-lsp-server
 
-A Python 3.8+ implementation of the Language Server Protocol
+A Python 3.9+ implementation of the Language Server Protocol
 making use of Jedi, pycodestyle, Pyflakes and YAPF.
 
 
