@@ -1,5 +1,5 @@
 {% set name = "python-lsp-server" %}
-{% set version = "1.13.1" %}
+{% set version = "1.13.2" %}
 {% set python_min = "3.9" %}
 {% set build_number = 0 %}
 
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: bfa3d6bbca3fc3e6d0137b27cd1eabee65783a8d4314c36e1e230c603419afa3
+  sha256: d507fc6be69861740827f4e4dffa1c9b1dec97c0ead859cfef86aa342a4c7904
 
 build:
   number: {{ build_number }}
