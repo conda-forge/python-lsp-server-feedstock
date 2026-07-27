@@ -1,5 +1,5 @@
 {% set name = "python-lsp-server" %}
-{% set version = "1.14.0" %}
+{% set version = "1.15.0" %}
 {% set python_min = "3.10" %}
 {% set build_number = 0 %}
 
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 509c445fc667f41ffd3191cb7512a497bf7dd76c14ceb1ee2f6c13ebe71f9a6b
+  sha256: 85fa090262c3d1aef09b759d98811d6cb9ad5bbc58af15d588608ae8c1925801
 
 build:
   number: {{ build_number }}
@@ -44,7 +44,7 @@ outputs:
         - python >={{ python_min }}
         - black
         - importlib-metadata >=4.8.3
-        - jedi >=0.17.2,<0.20
+        - jedi >=0.17.2,<0.21
         - python-lsp-jsonrpc >=1.1.0,<2.0.0
         - pluggy >=1.0.0
         - docstring-to-markdown
